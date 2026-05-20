@@ -506,119 +506,281 @@
       transition: transform 0.5s ease;
     }
 
-    /* Placeholder visual for each project */
-    .preview-1 {
-      background:
-        linear-gradient(135deg, #0a1628 0%, #162040 40%, #0d1830 100%);
-    }
-
-    .preview-2 {
-      background:
-        linear-gradient(135deg, #0f1a2e 0%, #1a2b44 40%, #0a1525 100%);
-    }
-
-    .preview-3 {
-      background:
-        linear-gradient(135deg, #12101e 0%, #1e1530 40%, #100e1c 100%);
-    }
-
-    .preview-4 {
-      background:
-        linear-gradient(135deg, #0e1a1a 0%, #152828 40%, #0a1515 100%);
-    }
-
-    .preview-mockup {
+    /* ── Real page previews ── */
+    .preview-wrap {
       position: absolute;
       inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 1.5rem;
-    }
-
-    .mockup-browser {
-      width: 85%;
-      background: rgba(255,255,255,0.04);
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.07);
       overflow: hidden;
+      font-family: 'Inter', sans-serif;
     }
 
-    .mockup-bar {
+    /* ---- Preview 1: Sales Page (navy/gold career coaching) ---- */
+    .preview-1 {
+      background: #1a2855;
       display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.5rem 0.75rem;
-      background: rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-direction: column;
+      padding: 1.4rem 1.4rem 1rem;
+      gap: 0.65rem;
     }
-
-    .mockup-dot {
-      width: 7px;
-      height: 7px;
+    .p1-label {
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a85c;
+      font-weight: 500;
+    }
+    .p1-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #e8e2d0;
+      line-height: 1.2;
+      max-width: 85%;
+    }
+    .p1-body {
+      font-size: 0.58rem;
+      color: rgba(232,226,208,0.7);
+      line-height: 1.6;
+      max-width: 88%;
+    }
+    .p1-body span { color: #c9a85c; }
+    .p1-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.45rem;
+      margin-top: 0.2rem;
+    }
+    .p1-card {
+      background: #ffffff;
+      border-radius: 4px;
+      padding: 0.55rem 0.45rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .p1-card-icon {
+      width: 10px;
+      height: 10px;
+      border: 1.5px solid #c9a85c;
+      border-radius: 50%;
+      position: relative;
+    }
+    .p1-card-icon::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border: 1px solid #c9a85c;
       border-radius: 50%;
     }
-
-    .mockup-dot:nth-child(1) { background: #ff5f56; }
-    .mockup-dot:nth-child(2) { background: #ffbd2e; }
-    .mockup-dot:nth-child(3) { background: #27c93f; }
-
-    .mockup-url {
-      flex: 1;
-      height: 6px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 3px;
-      margin-left: 0.5rem;
+    .p1-card-title {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #1a2855;
+    }
+    .p1-card-text {
+      font-size: 0.45rem;
+      color: #555;
+      line-height: 1.5;
     }
 
-    .mockup-content {
-      padding: 0.75rem;
+    /* ---- Preview 2: Onboarding (dark navy / gold CTA box) ---- */
+    .preview-2 {
+      background: #0f1728;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      gap: 0;
+    }
+    .p2-box {
+      background: linear-gradient(145deg, #c9a85c 0%, #b8930a 50%, #c9a85c 100%);
+      border-radius: 8px;
+      padding: 1.4rem 1.2rem 1.2rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .p2-step {
+      font-size: 0.48rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #1a2855;
+      font-weight: 600;
+    }
+    .p2-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f1728;
+      line-height: 1.2;
+    }
+    .p2-body {
+      font-size: 0.5rem;
+      color: rgba(15,23,40,0.75);
+      line-height: 1.6;
+    }
+    .p2-btn {
+      background: #0f1728;
+      color: #fff;
+      border-radius: 4px;
+      padding: 0.45rem 1rem;
+      font-size: 0.48rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ---- Preview 3: Maisak (near-black cinematic) ---- */
+    .preview-3 {
+      background: radial-gradient(ellipse 70% 50% at 50% 50%, #1a0c06 0%, #080400 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.4rem;
       gap: 0.4rem;
     }
+    .p3-label {
+      font-size: 0.48rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(240,220,170,0.6);
+      font-weight: 400;
+    }
+    .p3-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #f0dcaa;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .p3-divider {
+      width: 2.5rem;
+      height: 1px;
+      background: rgba(240,220,170,0.35);
+    }
+    .p3-artist {
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(240,220,170,0.7);
+    }
+    .p3-venue {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f0dcaa;
+      line-height: 1.5;
+      margin-top: 0.35rem;
+    }
+    .p3-sub {
+      font-size: 0.48rem;
+      letter-spacing: 0.1em;
+      color: rgba(240,220,170,0.5);
+    }
 
-    .mockup-hero-block {
-      height: 36px;
-      border-radius: 3px;
-      background: rgba(255,255,255,0.05);
+    /* ---- Preview 4: Zuco voting (black, bold, photo) ---- */
+    .preview-4 {
+      background: #0a0a0a;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 0.4rem 0.5rem;
-      gap: 0.3rem;
+      align-items: center;
+      padding: 1rem 1rem 0;
+      gap: 0.4rem;
+      overflow: hidden;
     }
-
-    .mockup-line {
-      height: 4px;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.12);
+    .p4-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.05rem;
     }
-
-    .mockup-line.gold { background: rgba(201,169,110,0.4); }
-    .mockup-line.short { width: 50%; }
-    .mockup-line.medium { width: 70%; }
-
-    .mockup-blocks {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.3rem;
+    .p4-logo-top {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.12em;
+      line-height: 1;
     }
-
-    .mockup-block {
-      height: 22px;
-      border-radius: 3px;
-      background: rgba(255,255,255,0.04);
+    .p4-logo-bottom {
+      font-size: 0.42rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
     }
-
-    .mockup-cta {
-      height: 14px;
-      width: 40%;
-      border-radius: 2px;
-      background: rgba(201,169,110,0.25);
+    .p4-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .p4-sub {
+      font-size: 0.46rem;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+    }
+    .p4-photo-frame {
+      width: 78%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #1a1a1a 0%, #2a2520 40%, #1a1612 100%);
+      border-radius: 6px 6px 0 0;
+      position: relative;
+      overflow: hidden;
       margin-top: 0.2rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .p4-photo-silhouette {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 55%;
+      height: 85%;
+      background: linear-gradient(to top, #111 0%, #2a2520 60%, transparent 100%);
+      clip-path: polygon(25% 100%, 75% 100%, 85% 40%, 70% 15%, 50% 8%, 30% 15%, 15% 40%);
+    }
+    .p4-photo-car {
+      position: absolute;
+      bottom: 8%;
+      left: 5%;
+      right: 5%;
+      height: 30%;
+      background: linear-gradient(135deg, #3d2a2a 0%, #5a3535 50%, #3d2a2a 100%);
+      border-radius: 4px 4px 2px 2px;
+      opacity: 0.7;
+    }
+    .p4-label-bottom {
+      position: absolute;
+      bottom: 0.3rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0.5rem;
+    }
+    .p4-outfit-name {
+      font-size: 0.42rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.08em;
+    }
+    .p4-tap {
+      font-size: 0.4rem;
+      color: rgba(255,255,255,0.4);
+      font-style: italic;
     }
 
     /* Project card content */
@@ -1114,27 +1276,26 @@
       <div class="project-card reveal">
         <div class="card-number">01</div>
         <div class="card-image">
-          <div class="card-image-inner preview-1">
-            <div class="preview-mockup">
-              <div class="mockup-browser">
-                <div class="mockup-bar">
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-url"></div>
+          <div class="card-image-inner">
+            <div class="preview-wrap preview-1">
+              <div class="p1-label">The Program</div>
+              <div class="p1-heading">From Stuck to Hired: A Strategic, End-to-End Career Transformation</div>
+              <div class="p1-body">A personalized program for STEM professionals who want to land roles in the <span>$80K to $150K+</span> range without relying on online applications.</div>
+              <div class="p1-cards">
+                <div class="p1-card">
+                  <div class="p1-card-icon"></div>
+                  <div class="p1-card-title">Positioning</div>
+                  <div class="p1-card-text">Articulate your experience so the right roles recognize you on sight.</div>
                 </div>
-                <div class="mockup-content">
-                  <div class="mockup-hero-block" style="height:50px; background:rgba(255,255,255,0.03);">
-                    <div class="mockup-line gold" style="width:75%"></div>
-                    <div class="mockup-line gold short"></div>
-                    <div class="mockup-line" style="width:45%; margin-top:4px;"></div>
-                  </div>
-                  <div class="mockup-blocks">
-                    <div class="mockup-block"></div>
-                    <div class="mockup-block"></div>
-                    <div class="mockup-block"></div>
-                  </div>
-                  <div class="mockup-cta"></div>
+                <div class="p1-card">
+                  <div class="p1-card-icon"></div>
+                  <div class="p1-card-title">Networking</div>
+                  <div class="p1-card-text">Build relationships that open doors before roles are posted.</div>
+                </div>
+                <div class="p1-card">
+                  <div class="p1-card-icon"></div>
+                  <div class="p1-card-title">Execution</div>
+                  <div class="p1-card-text">A clear, repeatable process with tracking and feedback.</div>
                 </div>
               </div>
             </div>
@@ -1153,27 +1314,13 @@
       <div class="project-card reveal reveal-delay-1">
         <div class="card-number">02</div>
         <div class="card-image">
-          <div class="card-image-inner preview-2">
-            <div class="preview-mockup">
-              <div class="mockup-browser">
-                <div class="mockup-bar">
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-url"></div>
-                </div>
-                <div class="mockup-content">
-                  <div class="mockup-hero-block" style="height:44px; background:rgba(255,255,255,0.03);">
-                    <div class="mockup-line" style="width:60%"></div>
-                    <div class="mockup-line gold medium" style="margin-top:4px;"></div>
-                  </div>
-                  <div style="display:flex; flex-direction:column; gap:0.3rem;">
-                    <div class="mockup-line" style="width:85%"></div>
-                    <div class="mockup-line" style="width:70%"></div>
-                    <div class="mockup-line" style="width:78%"></div>
-                  </div>
-                  <div class="mockup-cta" style="background:rgba(100,180,255,0.2);"></div>
-                </div>
+          <div class="card-image-inner">
+            <div class="preview-wrap preview-2">
+              <div class="p2-box">
+                <div class="p2-step">Final Step</div>
+                <div class="p2-title">Book Your First Coaching Session</div>
+                <div class="p2-body">Once your onboarding is done, lock in your first 1-on-1 with Amith. This is where we map out your personalized strategy and the 7-stage plan to land your next role.</div>
+                <div class="p2-btn">Book My First Session →</div>
               </div>
             </div>
           </div>
@@ -1191,26 +1338,14 @@
       <div class="project-card reveal reveal-delay-2">
         <div class="card-number">03</div>
         <div class="card-image">
-          <div class="card-image-inner preview-3">
-            <div class="preview-mockup">
-              <div class="mockup-browser">
-                <div class="mockup-bar">
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-url"></div>
-                </div>
-                <div class="mockup-content">
-                  <div class="mockup-hero-block" style="height:52px; background: linear-gradient(135deg, rgba(180,100,200,0.1), rgba(100,50,150,0.1)); border: 1px solid rgba(180,100,200,0.15);">
-                    <div class="mockup-line" style="background:rgba(200,150,255,0.35); width:65%"></div>
-                    <div class="mockup-line" style="background:rgba(200,150,255,0.2); width:45%; margin-top:4px;"></div>
-                  </div>
-                  <div class="mockup-blocks" style="grid-template-columns: 1fr;">
-                    <div class="mockup-block" style="height:30px; background: rgba(180,100,200,0.08); border: 1px solid rgba(180,100,200,0.12); border-radius:4px;"></div>
-                  </div>
-                  <div class="mockup-cta" style="background:rgba(180,100,200,0.25); width:55%;"></div>
-                </div>
-              </div>
+          <div class="card-image-inner">
+            <div class="preview-wrap preview-3">
+              <div class="p3-label">Lanzamiento</div>
+              <div class="p3-title">TE ENTIENDO</div>
+              <div class="p3-divider"></div>
+              <div class="p3-artist">Maisak</div>
+              <div class="p3-venue">Sala de<br>Despecho<br><span style="font-size:0.42rem; letter-spacing:0.2em; color:rgba(240,220,170,0.5);">Colombia</span></div>
+              <div class="p3-sub">Miércoles 18 de marzo · 4:30pm<br>Cra. 13a #93-91</div>
             </div>
           </div>
           <div class="card-overlay"></div>
@@ -1227,24 +1362,20 @@
       <div class="project-card reveal reveal-delay-3">
         <div class="card-number">04</div>
         <div class="card-image">
-          <div class="card-image-inner preview-4">
-            <div class="preview-mockup">
-              <div class="mockup-browser">
-                <div class="mockup-bar">
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-url"></div>
-                </div>
-                <div class="mockup-content">
-                  <div class="mockup-hero-block" style="height:32px; background:rgba(255,255,255,0.03); text-align:center; align-items:center; display:flex; flex-direction:column; justify-content:center;">
-                    <div class="mockup-line" style="background:rgba(100,220,180,0.3); width:55%; margin:0 auto;"></div>
-                  </div>
-                  <div class="mockup-blocks" style="grid-template-columns:1fr 1fr; gap:0.5rem;">
-                    <div class="mockup-block" style="height:40px; background:rgba(100,220,180,0.07); border:1px solid rgba(100,220,180,0.15); border-radius:4px;"></div>
-                    <div class="mockup-block" style="height:40px; background:rgba(100,220,180,0.07); border:1px solid rgba(100,220,180,0.15); border-radius:4px;"></div>
-                  </div>
-                  <div class="mockup-cta" style="background:rgba(100,220,180,0.25); width:50%; margin:0 auto;"></div>
+          <div class="card-image-inner">
+            <div class="preview-wrap preview-4">
+              <div class="p4-logo">
+                <div class="p4-logo-top">ZUCO</div>
+                <div class="p4-logo-bottom">omg.</div>
+              </div>
+              <div class="p4-title">Vota por el<br>Outfit de Zuco Hoy</div>
+              <div class="p4-sub">Tres60Lab nos dio 3 opciones de outfit, ¿cuál es tu favorita?</div>
+              <div class="p4-photo-frame">
+                <div class="p4-photo-car"></div>
+                <div class="p4-photo-silhouette"></div>
+                <div class="p4-label-bottom">
+                  <span class="p4-outfit-name">Mercedes Rosa</span>
+                  <span class="p4-tap">Toca para elegir</span>
                 </div>
               </div>
             </div>
