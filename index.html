@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federico Marín — Diseñador de Landing Pages y Experiencias Digitales</title>
+  <meta name="description" content="Portfolio de landing pages creadas por Federico Marín, enfocadas en conversión, experiencia de usuario, registro, ventas y engagement digital." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy:        #080d1a;
+      --navy-mid:    #0d1428;
+      --navy-card:   #111827;
+      --navy-light:  #1a2540;
+      --gold:        #c9a96e;
+      --gold-light:  #e2c98a;
+      --gold-dim:    #8a6e3e;
+      --cream:       #f0ebe0;
+      --white-warm:  #faf7f2;
+      --text-main:   #ddd8ce;
+      --text-muted:  #8a8a8a;
+      --border:      rgba(201,169,110,0.15);
+      --border-card: rgba(201,169,110,0.12);
+      --shadow:      0 8px 40px rgba(0,0,0,0.5);
+      --shadow-hover:0 16px 60px rgba(0,0,0,0.7);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--navy);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* =============================================
+       TYPOGRAPHY
+    ============================================= */
+    .serif { font-family: 'Cormorant Garamond', serif; }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    /* =============================================
+       NOISE TEXTURE OVERLAY
+    ============================================= */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(8,13,26,0.97) 0%, rgba(8,13,26,0) 100%);
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.3s, background 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(8,13,26,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2px;
+      transition: background 0.3s, color 0.3s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,169,110,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,169,110,0.04) 0%, transparent 60%);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 300;
+      color: var(--white-warm);
+      max-width: 860px;
+      margin: 0 auto 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.35s;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      font-weight: 300;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.5s;
+    }
+
+    .hero-name {
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.6s;
+    }
+
+    .hero-name .name-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--cream);
+      display: block;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-name .name-title {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.75s;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,169,110,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(240,235,224,0.3);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-gold-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-gold-outline:hover {
+      background: var(--gold);
+      color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,169,110,0.3);
+    }
+
+    /* =============================================
+       SCROLL INDICATOR
+    ============================================= */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1.2s;
+    }
+
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 2.5rem;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollDrop 1.5s ease-in-out infinite;
+    }
+
+    /* =============================================
+       SECTION BASE
+    ============================================= */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* =============================================
+       DIVIDER
+    ============================================= */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border) 30%, var(--border) 70%, transparent);
+      margin: 0;
+    }
+
+    /* =============================================
+       ABOUT SECTION
+    ============================================= */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-left .big-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 10vw, 9rem);
+      font-weight: 300;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,169,110,0.2);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .about-left .about-stat {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 0;
+    }
+
+    .about-left .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: var(--gold);
+      display: block;
+    }
+
+    .about-left .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .about-right h2 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--white-warm);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-right h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .about-right p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      max-width: 500px;
+    }
+
+    /* =============================================
+       PORTFOLIO SECTION
+    ============================================= */
+    #portfolio {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    #portfolio > .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    #portfolio > .section-header h2 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: var(--white-warm);
+      margin-bottom: 1rem;
+    }
+
+    #portfolio > .section-header h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    #portfolio > .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .project-card {
+      position: relative;
+      background: var(--navy-card);
+      border: 1px solid var(--border-card);
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      z-index: 2;
+      border-color: rgba(201,169,110,0.3);
+    }
+
+    .project-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .project-card:hover .card-image-inner {
+      transform: scale(1.04);
+    }
+
+    /* Card preview image area */
+    .card-image {
+      position: relative;
+      width: 100%;
+      padding-top: 58%;
+      overflow: hidden;
+      background: var(--navy-light);
+    }
+
+    .card-image-inner {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.5s ease;
+    }
+
+    /* Placeholder visual for each project */
+    .preview-1 {
+      background:
+        linear-gradient(135deg, #0a1628 0%, #162040 40%, #0d1830 100%);
+    }
+
+    .preview-2 {
+      background:
+        linear-gradient(135deg, #0f1a2e 0%, #1a2b44 40%, #0a1525 100%);
+    }
+
+    .preview-3 {
+      background:
+        linear-gradient(135deg, #12101e 0%, #1e1530 40%, #100e1c 100%);
+    }
+
+    .preview-4 {
+      background:
+        linear-gradient(135deg, #0e1a1a 0%, #152828 40%, #0a1515 100%);
+    }
+
+    .preview-mockup {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.5rem;
+    }
+
+    .mockup-browser {
+      width: 85%;
+      background: rgba(255,255,255,0.04);
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+    }
+
+    .mockup-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mockup-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .mockup-dot:nth-child(1) { background: #ff5f56; }
+    .mockup-dot:nth-child(2) { background: #ffbd2e; }
+    .mockup-dot:nth-child(3) { background: #27c93f; }
+
+    .mockup-url {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      margin-left: 0.5rem;
+    }
+
+    .mockup-content {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .mockup-hero-block {
+      height: 36px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.4rem 0.5rem;
+      gap: 0.3rem;
+    }
+
+    .mockup-line {
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .mockup-line.gold { background: rgba(201,169,110,0.4); }
+    .mockup-line.short { width: 50%; }
+    .mockup-line.medium { width: 70%; }
+
+    .mockup-blocks {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.3rem;
+    }
+
+    .mockup-block {
+      height: 22px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .mockup-cta {
+      height: 14px;
+      width: 40%;
+      border-radius: 2px;
+      background: rgba(201,169,110,0.25);
+      margin-top: 0.2rem;
+    }
+
+    /* Project card content */
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, rgba(8,13,26,0.85) 100%);
+      opacity: 0.5;
+      transition: opacity 0.4s;
+    }
+
+    .card-body {
+      padding: 1.75rem 1.75rem 2rem;
+    }
+
+    .card-category {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--white-warm);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      transition: gap 0.3s;
+    }
+
+    .card-link:hover { gap: 0.85rem; }
+
+    .card-link::after {
+      content: '→';
+      font-size: 1rem;
+    }
+
+    .card-number {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(201,169,110,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    /* =============================================
+       CAPABILITIES SECTION
+    ============================================= */
+    #capabilities {
+      padding: 6rem 2rem;
+    }
+
+    .capabilities-header {
+      text-align: center;
+      margin-bottom: 4.5rem;
+    }
+
+    .capabilities-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300;
+      color: var(--white-warm);
+      margin-bottom: 1rem;
+    }
+
+    .capabilities-header h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .capability-item {
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border-card);
+      border-right: none;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .capability-item:last-child {
+      border-right: 1px solid var(--border-card);
+    }
+
+    .capability-item:hover {
+      background: rgba(201,169,110,0.04);
+    }
+
+    .capability-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .capability-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .capability-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--white-warm);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .capability-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* =============================================
+       CTA SECTION
+    ============================================= */
+    #cta {
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 7rem 2rem;
+      text-align: center;
+      max-width: 100%;
+    }
+
+    #cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    #cta h2 {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 300;
+      color: var(--white-warm);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    #cta h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    #cta p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-contact-info {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .cta-contact-item:hover { color: var(--gold); }
+
+    .cta-contact-item svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.6;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-brand .brand-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-contact a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-contact a:hover { color: var(--gold); }
+
+    .footer-desc {
+      max-width: 280px;
+    }
+
+    .footer-desc p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    .footer-gold-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .footer-gold-line::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--gold-dim);
+    }
+
+    /* =============================================
+       ANIMATIONS
+    ============================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scrollDrop {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.6) translateY(0); transform-origin: top; }
+      50%       { opacity: 1;   transform: scaleY(1)   translateY(4px); transform-origin: top; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* =============================================
+       FLOATING GOLD LINE ACCENT
+    ============================================= */
+    .gold-line-accent {
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 1.5rem 0;
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      #about {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-left { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+      .about-left .big-number { display: none; }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .capability-item:nth-child(2) {
+        border-right: 1px solid var(--border-card);
+      }
+
+      .capability-item:nth-child(3) {
+        border-top: none;
+      }
+
+      .capability-item:nth-child(4) {
+        border-right: 1px solid var(--border-card);
+        border-top: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.25rem; }
+      #hero { padding: 7rem 1.25rem 4rem; }
+      .hero-title { font-size: 2.4rem; }
+
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .capability-item { border-right: 1px solid var(--border-card) !important; }
+
+      .footer-inner { flex-direction: column; gap: 2rem; }
+
+      #cta { padding: 5rem 1.25rem; }
+      .cta-contact-info { flex-direction: column; align-items: center; }
+
+      .card-body { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">FM <span>·</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#portfolio">Proyectos</a></li>
+      <li><a href="#capabilities">Servicios</a></li>
+      <li><a href="#cta" class="nav-cta">Contactar</a></li>
+    </ul>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero">
+    <div class="hero-eyebrow">Portfolio · Experiencias Digitales</div>
+    <h1 class="hero-title serif">
+      Landing pages diseñadas para <em>convertir, conectar</em> y elevar marcas
+    </h1>
+    <p class="hero-subtitle">
+      Portfolio de landing pages creadas por Federico Marín, enfocadas en conversión, experiencia de usuario, registro, ventas y engagement digital.
+    </p>
+    <div class="hero-name">
+      <span class="name-big">Federico Marín</span>
+      <span class="name-title">Diseñador de Landing Pages y Experiencias Digitales</span>
+    </div>
+    <div class="hero-buttons">
+      <a href="#portfolio" class="btn btn-primary">Ver proyectos</a>
+      <a href="mailto:fedemarinrojas@gmail.com" class="btn btn-outline">Contactar</a>
+    </div>
+    <div class="scroll-hint">
+      <span>Explorar</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about">
+    <div class="about-left reveal">
+      <span class="big-number">FM</span>
+      <div class="about-stat">
+        <span class="stat-number">4+</span>
+        <span class="stat-label">Proyectos en portfolio</span>
+      </div>
+      <div class="about-stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Enfoque en conversión</span>
+      </div>
+    </div>
+    <div class="about-right reveal reveal-delay-2">
+      <div class="section-label">Sobre mí</div>
+      <h2>Diseño páginas que hacen <em>que las cosas pasen</em></h2>
+      <span class="gold-line-accent"></span>
+      <p>
+        Soy Federico Marín, diseñador de landing pages y experiencias digitales. Creo páginas estratégicas, visualmente cuidadas y funcionales para marcas, artistas, eventos y negocios que necesitan convertir atención en acción.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ==================== PORTFOLIO ==================== -->
+  <section id="portfolio" style="max-width:100%; padding-left:0; padding-right:0;">
+    <div class="section-header reveal" style="max-width:1200px; margin:0 auto; padding:0 2rem;">
+      <div class="section-label" style="justify-content:center;">Trabajos destacados</div>
+      <h2><em>Top Picks</em> — Portfolio de Landing Pages</h2>
+      <p>Proyectos reales, diseñados con intención, estrategia y detalle visual.</p>
+    </div>
+
+    <div class="portfolio-grid" style="margin-top:3rem;">
+
+      <!-- CARD 1 -->
+      <div class="project-card reveal">
+        <div class="card-number">01</div>
+        <div class="card-image">
+          <div class="card-image-inner preview-1">
+            <div class="preview-mockup">
+              <div class="mockup-browser">
+                <div class="mockup-bar">
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-url"></div>
+                </div>
+                <div class="mockup-content">
+                  <div class="mockup-hero-block" style="height:50px; background:rgba(255,255,255,0.03);">
+                    <div class="mockup-line gold" style="width:75%"></div>
+                    <div class="mockup-line gold short"></div>
+                    <div class="mockup-line" style="width:45%; margin-top:4px;"></div>
+                  </div>
+                  <div class="mockup-blocks">
+                    <div class="mockup-block"></div>
+                    <div class="mockup-block"></div>
+                    <div class="mockup-block"></div>
+                  </div>
+                  <div class="mockup-cta"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Sales Page · Conversión</div>
+          <div class="card-title">Página Principal de Ventas</div>
+          <p class="card-desc">Landing page de ventas para un coach que ayuda a profesionales STEM a conseguir ofertas laborales de $80K–$200K+. Presenta el método de 7 etapas, testimonios y llamados a agendar una llamada.</p>
+          <a href="https://amith-narayan-830f.mykajabi.com/career-success-architects-main-sales-page" target="_blank" rel="noopener noreferrer" class="card-link">Ver landing page</a>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="card-number">02</div>
+        <div class="card-image">
+          <div class="card-image-inner preview-2">
+            <div class="preview-mockup">
+              <div class="mockup-browser">
+                <div class="mockup-bar">
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-url"></div>
+                </div>
+                <div class="mockup-content">
+                  <div class="mockup-hero-block" style="height:44px; background:rgba(255,255,255,0.03);">
+                    <div class="mockup-line" style="width:60%"></div>
+                    <div class="mockup-line gold medium" style="margin-top:4px;"></div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                    <div class="mockup-line" style="width:85%"></div>
+                    <div class="mockup-line" style="width:70%"></div>
+                    <div class="mockup-line" style="width:78%"></div>
+                  </div>
+                  <div class="mockup-cta" style="background:rgba(100,180,255,0.2);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Onboarding · Post-compra</div>
+          <div class="card-title">Página de Onboarding para Clientes</div>
+          <p class="card-desc">Página de bienvenida para clientes que ya pagaron. Guía al usuario paso a paso antes de su primera llamada con tareas, herramientas y preparación.</p>
+          <a href="https://amith-narayan-830f.mykajabi.com/welcome-next-steps?preview_theme_id=2161016544" target="_blank" rel="noopener noreferrer" class="card-link">Ver landing page</a>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="card-number">03</div>
+        <div class="card-image">
+          <div class="card-image-inner preview-3">
+            <div class="preview-mockup">
+              <div class="mockup-browser">
+                <div class="mockup-bar">
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-url"></div>
+                </div>
+                <div class="mockup-content">
+                  <div class="mockup-hero-block" style="height:52px; background: linear-gradient(135deg, rgba(180,100,200,0.1), rgba(100,50,150,0.1)); border: 1px solid rgba(180,100,200,0.15);">
+                    <div class="mockup-line" style="background:rgba(200,150,255,0.35); width:65%"></div>
+                    <div class="mockup-line" style="background:rgba(200,150,255,0.2); width:45%; margin-top:4px;"></div>
+                  </div>
+                  <div class="mockup-blocks" style="grid-template-columns: 1fr;">
+                    <div class="mockup-block" style="height:30px; background: rgba(180,100,200,0.08); border: 1px solid rgba(180,100,200,0.12); border-radius:4px;"></div>
+                  </div>
+                  <div class="mockup-cta" style="background:rgba(180,100,200,0.25); width:55%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Registro · Captura de datos</div>
+          <div class="card-title">Registro para Evento Exclusivo</div>
+          <p class="card-desc">Landing page de registro para un evento íntimo de música en vivo con Maisak. Los asistentes dejan sus datos para entrar a la lista y recibir acceso al evento.</p>
+          <a href="https://maisak.siente.live/" target="_blank" rel="noopener noreferrer" class="card-link">Ver landing page</a>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="card-number">04</div>
+        <div class="card-image">
+          <div class="card-image-inner preview-4">
+            <div class="preview-mockup">
+              <div class="mockup-browser">
+                <div class="mockup-bar">
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-url"></div>
+                </div>
+                <div class="mockup-content">
+                  <div class="mockup-hero-block" style="height:32px; background:rgba(255,255,255,0.03); text-align:center; align-items:center; display:flex; flex-direction:column; justify-content:center;">
+                    <div class="mockup-line" style="background:rgba(100,220,180,0.3); width:55%; margin:0 auto;"></div>
+                  </div>
+                  <div class="mockup-blocks" style="grid-template-columns:1fr 1fr; gap:0.5rem;">
+                    <div class="mockup-block" style="height:40px; background:rgba(100,220,180,0.07); border:1px solid rgba(100,220,180,0.15); border-radius:4px;"></div>
+                    <div class="mockup-block" style="height:40px; background:rgba(100,220,180,0.07); border:1px solid rgba(100,220,180,0.15); border-radius:4px;"></div>
+                  </div>
+                  <div class="mockup-cta" style="background:rgba(100,220,180,0.25); width:50%; margin:0 auto;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Fan Engagement · Experiencia interactiva</div>
+          <div class="card-title">Página de Votación de Outfit</div>
+          <p class="card-desc">Página interactiva donde los fans votan por el outfit que quieren que el artista use en el concierto. Engagement que involucra a la audiencia antes del show.</p>
+          <a href="https://zuco.siente.live/vote" target="_blank" rel="noopener noreferrer" class="card-link">Ver landing page</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ==================== CAPABILITIES ==================== -->
+  <section id="capabilities" style="max-width:100%; padding-left:0; padding-right:0;">
+    <div class="capabilities-header reveal" style="max-width:1200px; margin:0 auto; padding:0 2rem;">
+      <div class="section-label" style="justify-content:center;">Servicios</div>
+      <h2>Qué <em>diseño</em></h2>
+    </div>
+
+    <div class="capabilities-grid" style="max-width:1200px; margin:3rem auto 0;">
+
+      <div class="capability-item reveal">
+        <svg class="capability-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" stroke="rgba(201,169,110,0.4)" stroke-width="1"/>
+          <path d="M12 20h16M20 12l8 8-8 8" stroke="rgba(201,169,110,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="capability-number">01</span>
+        <div class="capability-title">Conversión</div>
+        <p class="capability-desc">Landing pages pensadas para transformar visitantes en leads, llamadas, registros o ventas. Cada elemento tiene un propósito estratégico.</p>
+      </div>
+
+      <div class="capability-item reveal reveal-delay-1">
+        <svg class="capability-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="32" height="24" rx="2" stroke="rgba(201,169,110,0.4)" stroke-width="1"/>
+          <path d="M4 14h32" stroke="rgba(201,169,110,0.6)" stroke-width="1"/>
+          <circle cx="9" cy="11" r="1.5" fill="rgba(201,169,110,0.6)"/>
+          <circle cx="14" cy="11" r="1.5" fill="rgba(201,169,110,0.4)"/>
+        </svg>
+        <span class="capability-number">02</span>
+        <div class="capability-title">Experiencia</div>
+        <p class="capability-desc">Páginas con una narrativa visual clara que hacen que la marca se sienta premium, coherente y memorable desde el primer scroll.</p>
+      </div>
+
+      <div class="capability-item reveal reveal-delay-2">
+        <svg class="capability-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 8v8M20 24v8M8 20h8M24 20h8" stroke="rgba(201,169,110,0.5)" stroke-width="1" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="6" stroke="rgba(201,169,110,0.8)" stroke-width="1.5"/>
+          <circle cx="20" cy="20" r="2" fill="rgba(201,169,110,0.6)"/>
+        </svg>
+        <span class="capability-number">03</span>
+        <div class="capability-title">Engagement</div>
+        <p class="capability-desc">Experiencias interactivas que hacen que los usuarios participen activamente: voten, registren, reaccionen y se involucren con la marca.</p>
+      </div>
+
+      <div class="capability-item reveal reveal-delay-3">
+        <svg class="capability-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 32L20 8l12 24" stroke="rgba(201,169,110,0.5)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 24h16" stroke="rgba(201,169,110,0.8)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="capability-number">04</span>
+        <div class="capability-title">Lanzamientos</div>
+        <p class="capability-desc">Páginas para eventos, artistas, campañas y productos que necesitan salir al mercado con fuerza, identidad y claridad de mensaje.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ==================== CTA ==================== -->
+  <section id="cta">
+    <div id="cta-inner">
+      <div class="section-label reveal" style="justify-content:center; margin-bottom:2rem;">¿Empezamos?</div>
+      <h2 class="reveal reveal-delay-1">
+        ¿Tienes una <em>landing page</em> en mente?
+      </h2>
+      <p class="reveal reveal-delay-2">
+        Diseño experiencias digitales que hacen que las personas hagan clic, se registren, voten, compren o agenden. Escríbeme y creamos algo memorable.
+      </p>
+      <div class="cta-buttons reveal reveal-delay-3">
+        <a href="mailto:fedemarinrojas@gmail.com" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Enviar correo
+        </a>
+        <a href="https://wa.me/573182804338" target="_blank" rel="noopener noreferrer" class="btn btn-gold-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+      <div class="cta-contact-info reveal reveal-delay-4">
+        <a href="mailto:fedemarinrojas@gmail.com" class="cta-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          fedemarinrojas@gmail.com
+        </a>
+        <a href="https://wa.me/573182804338" target="_blank" rel="noopener noreferrer" class="cta-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +57 318 280 4338
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">Federico Marín</span>
+        <span class="brand-role">Diseñador de Landing Pages y Experiencias Digitales</span>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:fedemarinrojas@gmail.com">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          fedemarinrojas@gmail.com
+        </a>
+        <a href="https://wa.me/573182804338" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +57 318 280 4338
+        </a>
+      </div>
+      <div class="footer-desc">
+        <p>Portfolio de landing pages, experiencias digitales y páginas diseñadas para convertir. Diseño estratégico para marcas, artistas y negocios.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Federico Marín · Todos los derechos reservados</p>
+      <span class="footer-gold-line">Portfolio Digital</span>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Reveal on scroll (IntersectionObserver)
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
